@@ -54,6 +54,7 @@ class MybatisplusdemoApplicationTests {
         student.setSid(1L);
         Student findStudent = studentMapper.selectOne(new QueryWrapper<Student>(student));
         System.out.println(findStudent);
+        System.out.println(findStudent.toString());
     }
 
 }
