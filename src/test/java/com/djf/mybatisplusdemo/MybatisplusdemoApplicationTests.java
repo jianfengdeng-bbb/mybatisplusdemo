@@ -1,5 +1,6 @@
 package com.djf.mybatisplusdemo;
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.djf.mybatisplusdemo.mapper.StudentMapper;
 import com.djf.mybatisplusdemo.pojo.Student;
@@ -45,6 +46,13 @@ class MybatisplusdemoApplicationTests {
         log.info("当前页面数据"+page.getSize());
         log.info("总页数"+page.getPages());
         log.info(("总记录数"+page.getTotal()));
+    }
+
+    @Test
+    public void queryStudent(){
+        Student student = new Student();
+        student.setSid(1L);
+        studentMapper.selectOne(new QueryWrapper<Student>(student));
     }
 
 }
