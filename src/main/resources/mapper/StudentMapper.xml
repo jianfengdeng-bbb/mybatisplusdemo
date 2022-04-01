@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.djf.mybatisplusdemo.mapper.StudentMapper">
+
+    <resultMap id="BaseResultMap" type="com.djf.mybatisplusdemo.pojo.Student">
+            <id property="sid" column="sid" jdbcType="BIGINT"/>
+            <result property="sName" column="s_name" jdbcType="VARCHAR"/>
+            <result property="age" column="age" jdbcType="INTEGER"/>
+            <result property="gender" column="gender" jdbcType="CHAR"/>
+            <result property="phone" column="phone" jdbcType="CHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        sid,s_name,age,
+        gender,phone
+    </sql>
+</mapper>
