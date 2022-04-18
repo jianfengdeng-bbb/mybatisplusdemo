@@ -1,5 +1,6 @@
 package com.djf.mybatisplusdemo;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.djf.mybatisplusdemo.mapper.StudentMapper;
@@ -21,13 +22,14 @@ class MybatisplusdemoApplicationTests {
     private StudentMapper studentMapper;
     @Autowired
     private StudentService studentService;
+
     @Test
     void contextLoads() {
 
     }
 
     @Test
-    public void testInsert(){
+    public void testInsert() {
         Student student = new Student();
         student.setSName("张三");
         student.setAge(10);
@@ -36,25 +38,34 @@ class MybatisplusdemoApplicationTests {
         int i = studentMapper.insert(student);
         System.out.println(i);
     }
+
     @Test
-    public void PageTest(){
-        Page page = new Page(1,2);
-        studentMapper.selectPage(page,null);
+    public void PageTest() {
+        Page page = new Page(1, 2);
+        studentMapper.selectPage(page, null);
         List<Student> list = page.getRecords();
         list.forEach(System.out::println);
-        log.info("当前页数"+page.getCurrent());
-        log.info("当前页面数据"+page.getSize());
-        log.info("总页数"+page.getPages());
-        log.info(("总记录数"+page.getTotal()));
+        log.info("当前页数" + page.getCurrent());
+        log.info("当前页面数据" + page.getSize());
+        log.info("总页数" + page.getPages());
+        log.info(("总记录数" + page.getTotal()));
     }
 
     @Test
-    public void queryStudent(){
+    public void queryStudent() {
         Student student = new Student();
         student.setSid(1L);
         Student findStudent = studentMapper.selectOne(new QueryWrapper<Student>(student));
         System.out.println(findStudent);
         System.out.println(findStudent.toString());
+    }
+
+    @Test
+    public void updateStudent() {
+        QueryWrapper queryWrapper = new QueryWrapper();
+        Student student = new Student(null, "李四", 12, "1", "12312");
+        queryWrapper.eq("sid", "4");
+        studentMapper.update(student, queryWrapper);
     }
 
 }

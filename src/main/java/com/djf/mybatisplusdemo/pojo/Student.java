@@ -5,7 +5,10 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import java.io.Serializable;
+
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 
@@ -13,11 +16,13 @@ import lombok.Data;
  */
 @TableName(value ="t_student")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Student implements Serializable {
     /**
      * 主键ID
      */
-    @TableId(type = IdType.INPUT)
+    @TableId(type = IdType.AUTO)
     private Long sid;
 
     /**
